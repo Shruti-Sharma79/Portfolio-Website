@@ -27,7 +27,7 @@ function openPDF(event) {
 
 
 
-const scriptURL = '<SCRIPT URL>'
+const scriptURL = '<https://script.google.com/macros/s/AKfycbw-QxLQkPIv4gm1QixJFwRU7ffO16uEAvYU5rCDf9ZMuhFmjo9H3qnFCRyKWfsZ2BcFMA/exec>'
   const form = document.forms['submit-to-google-sheet']
 
   form.addEventListener('submit', e => {
