@@ -27,33 +27,12 @@ function openPDF(event) {
 
 
 
+const scriptURL = '<SCRIPT URL>'
+  const form = document.forms['submit-to-google-sheet']
 
-
-    document.getElementById('contactForm').addEventListener('submit', function(event) {
-        event.preventDefault();
-        
-        const name = document.getElementById('name').value;
-        const email = document.getElementById('email').value;
-        const subject = document.getElementById('subject').value;
-        const message = document.getElementById('message').value;
-
-        fetch('https://script.google.com/macros/s/AKfycbw54dP7SM4fR11pS5XV172_mzf1m_OEuN6jrexJZA6FeZwiixluFEd5WH9ZDGS-ZmYMyg/exec', {
-            method: 'POST',
-            body: JSON.stringify({ name, email, subject, message }),
-            headers: {
-                'Content-Type': 'application/json',
-            },
-        })
-        .then(response => response.json())
-        .then(data => {
-            if (data.result === 'success') {
-                alert('Your message has been sent successfully!');
-            } else {
-                alert('There was an error sending your message.');
-            }
-        })
-        .catch(error => {
-            console.error('Error:', error);
-            alert('There was an error sending your message.');
-        });
-    });
+  form.addEventListener('submit', e => {
+    e.preventDefault()
+    fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+      .then(response => console.log('Success!', response))
+      .catch(error => console.error('Error!', error.message))
+  })
